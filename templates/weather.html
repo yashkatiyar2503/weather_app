@@ -5,60 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <style>
-        /* Overall Page Style */
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #89f7fe, #66a6ff);
-            margin: 0;
-            padding: 0;
-            color: #333;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin: 20px 0;
-            color: #fff;
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.5;
-            margin: 10px 0;
-        }
-
-        /* Weather Container */
-        .weather-container {
-            max-width: 600px;
-            margin: 30px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Highlight values */
-        p span {
-            font-weight: bold;
-            color: #007bff;
-        }
-    </style>
 </head>
 <body>
     <h1>Weather Information</h1>
-    <div class="weather-container">
-        <p>Temperature: <span>{{ weather_data.temperature }} °C</span></p>
-        <p>Average Temperature: <span>{{ weather_data.avg_temp }} °C</span></p>
-        <p>Max Temperature: <span>{{ weather_data.max_temp }} °C</span></p>
-        <p>Min Temperature: <span>{{ weather_data.min_temp }} °C</span></p>
-        <p>Forecast Date: <span>{{ weather_data.forcast_date }}</span></p>
-        <p>Description: <span>{{ weather_data.description }}</span></p>
-        <p>City: <span>{{ weather_data.city }}</span></p>
-        <p>Country: <span>{{ weather_data.country }}</span></p>
-        <p>Humidity: <span>{{ weather_data.humidity }}</span></p>
-        <p>Wind: <span>{{ weather_data.wind }}</span></p>
-        <p>UV Index: <span>{{ weather_data.uv }}</span></p>
-    </div>
+    <p>Temperature: {{ weather_data.temperature }} °C</p>
+    <p>Average Temperature: {{ weather_data.avg_temp }} °C</p>
+    <p>Max Temperature: {{weather_data.max_temp}} °C</p>
+    <p>Min Temperature: {{weather_data.min_temp}} °C</p>
+    <p>Forecast Date: {{weather_data.forcast_date}}</p>
+    <p>Description: {{ weather_data.description }}</p>
+    <p>City: {{weather_data.city}}</p>
+    <p>Country: {{weather_data.country}}</p>
+    <p>Humidity: {{weather_data.humidity}}</p>
+    <p>Wind: {{weather_data.wind}}</p>
+    <p>UV: {{weather_data.uv}}</p>
 </body>
 </html>
