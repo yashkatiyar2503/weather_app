@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <h1>Weather Information</h1>
+    <p>Temperature: {{ weather_data.temperature }} °C</p>
+    <p>Average Temperature: {{ weather_data.avg_temp }} °C</p>
+    <p>Max Temperature: {{weather_data.max_temp}} °C</p>
+    <p>Min Temperature: {{weather_data.min_temp}} °C</p>
+    <p>Forecast Date: {{weather_data.forcast_date}}</p>
+    <p>Description: {{ weather_data.description }}</p>
+    <p>City: {{weather_data.city}}</p>
+    <p>Country: {{weather_data.country}}</p>
+    <p>Humidity: {{weather_data.humidity}}</p>
+    <p>Wind: {{weather_data.wind}}</p>
+    <p>UV: {{weather_data.uv}}</p>
+</body>
+</html>
