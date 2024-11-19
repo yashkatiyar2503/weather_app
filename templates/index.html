@@ -4,6 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6fb1fc, #4364f7);
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 2.5rem;
+        }
+
+        /* Form Styles */
+        form {
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            font-size: 1.2rem;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+            margin: 0 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e64a43;
+        }
+
+        /* Weather Result Styles */
+        #weather-result {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: inline-block;
+            width: 50%;
+            text-align: left;
+            overflow-wrap: break-word;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 <body>
     <h1>Weather App</h1>
@@ -27,12 +97,8 @@
                 body: new URLSearchParams({ 'city': city }),
             });
             const data = await response.json();
-            document.getElementById('weather-result').innerHTML = JSON.stringify(data, null, 2);
+            document.getElementById('weather-result').innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
         });
     </script>
 </body>
 </html>
-
-<body>
-
-</body>
