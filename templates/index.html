@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Global Styles */
         body {
@@ -63,15 +64,37 @@
             padding: 20px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 10px;
-            display: inline-block;
-            width: 50%;
+            width: 70%;
             text-align: left;
             overflow-wrap: break-word;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
+        .weather-card {
+            flex: 1 1 calc(33.333% - 20px);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .weather-card i {
+            font-size: 2rem;
+            color: #ffdf6b;
+        }
+
+        .weather-card h3 {
+            margin: 10px 0;
+        }
+
+        .weather-card p {
+            margin: 0;
         }
     </style>
 </head>
@@ -97,7 +120,71 @@
                 body: new URLSearchParams({ 'city': city }),
             });
             const data = await response.json();
-            document.getElementById('weather-result').innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+
+            if (data.error) {
+                document.getElementById('weather-result').innerHTML = `<p>${data.error}</p>`;
+                return;
+            }
+
+            const weatherHTML = `
+                <div class="weather-card">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3>Temperature</h3>
+                    <p>${data.temperature} °C</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-thermometer-half"></i>
+                    <h3>Avg Temp</h3>
+                    <p>${data.avg_temp} °C</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-thermometer-three-quarters"></i>
+                    <h3>Max Temp</h3>
+                    <p>${data.max_temp} °C</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-thermometer-quarter"></i>
+                    <h3>Min Temp</h3>
+                    <p>${data.min_temp} °C</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-cloud-sun"></i>
+                    <h3>Description</h3>
+                    <p>${data.description}</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-city"></i>
+                    <h3>City</h3>
+                    <p>${data.city}</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-flag"></i>
+                    <h3>Country</h3>
+                    <p>${data.country}</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Humidity</h3>
+                    <p>${data.humidity}%</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Wind</h3>
+                    <p>${data.wind} kph</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>UV Index</h3>
+                    <p>${data.uv}</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Forecast Date</h3>
+                    <p>${data.forecast_date}</p>
+                </div>
+            `;
+
+            document.getElementById('weather-result').innerHTML = weatherHTML;
         });
     </script>
 </body>
